@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color:#0a192f;
+}
+
+a{
+    text-decoration: none;
+    color:inherit;
+}
+
+.avatar-img{
+    border-radius: 50%;
+    width:200px;
+}
+.container{
+    width: 90%;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color:white;
+}
+
+.userInfo{
+    width:60%;
+    margin: 1rem auto;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;
+}
+
+
+.text-gray{color:darkslategray}
+
+.text-center{
+    text-align: center;
+}
+
+.credit{
+    margin-top:4rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+input{
+    padding: 0.25rem;
+}
+button{
+    padding:0.25rem 1rem;
+    border:1px solid green;
+    color:white;
+    background-color: transparent;
+}
+
+.green-text{
+    color:#64ffda;
+}
+
+.underline{
+    text-decoration: underline;
+}
+
+.repos{
+    color:#0a192f;
+    display:grid;
+    gap:1rem;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top:1rem;
+}
+
+.repo{
+    display:flex;
+    background-color: rgb(195, 195, 212);
+    flex-direction: column;
+    height:100%;
+    justify-content: space-around;
+    border-radius: 0.25rem;
+    padding:2rem;
+    color:#0a192f;
+    border:1px solid white;
+    margin: 0 1rem;
+}
+
+
+.repo-header{
+    margin-bottom: 2rem;
+}
+
+.repo-header .repo-name{
+    margin-bottom:1rem;
+}
+
+.repo-header .repo-desc{
+    font-size: 13px;
+}
+
+.icon-div{
+    display:flex;
+    align-items: center;
+}
+
+
+
+
+.repo-details{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size:13px;
+    align-items: center;
+
+}
+
+.icon{
+    width:15px;
+}
+@media only screen and (max-width: 900px) {
+    .repos{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .userInfo{
+        width: 95%;
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .repos{
+        grid-template-columns: 1fr;
+    }
+
+    .container h1{
+        font-size: 25px;
+    }
+
+    .userInfo{
+        width: 95%;
+        flex-direction: column;
+    }
+}
+
