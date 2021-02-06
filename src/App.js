@@ -3,7 +3,7 @@ import Profile from './components/Profile'
 import githubService from './services/githubService';
 
 const App = () => {
-    
+
     const baseUrl = 'https://api.github.com/users'
     const [data, setData] = useState(null)
     const [repo, setRepo] = useState(null)
@@ -15,7 +15,6 @@ const App = () => {
         githubService
             .fetchUserData(url)
             .then(response => {
-                console.log(response)
                 setData(response)
             })
             .catch(_error => {
@@ -31,7 +30,7 @@ const App = () => {
                 setRepo(response)
             })
             .catch(_error => {
-                setErrorMessage('error happened')
+                setErrorMessage(`Could not load the repositories of the user ${data.name}`)
             })
     }
 
@@ -41,7 +40,9 @@ const App = () => {
         setErrorMessage('')
         event.preventDefault()
         getUserData()
-        getRepoData()
+        if (data !== null) {
+            getRepoData()
+        }
     }
 
     return (
