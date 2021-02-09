@@ -31,7 +31,6 @@ const Repos = ({ data }) => {
                         </div>
 
                     </a>
-
                 ))}
             </div>
         </div>

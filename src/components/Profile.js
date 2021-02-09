@@ -1,13 +1,11 @@
 import React from 'react';
 import Repos from './Repos'
 const Profile = ({ data, repo }) => {
-
     return (
         <div>
             <div className="userInfo">
                 <div>
                     <img src={data.avatar_url} className="avatar-img"></img>
-
                 </div>
                 <div>
                     <div>
