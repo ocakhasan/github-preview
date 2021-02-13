@@ -1,13 +1,13 @@
 import axios from 'axios'
 
-const fetchUserData = baseUrl => {
-    const request = axios.get(baseUrl)
-    return request.then(response => response.data)
+const fetchUserData = async baseUrl => {
+    const response = await axios.get(baseUrl)
+    return response.data
 }
 
-const fetchRepoData = repoUrl => {
-    const request = axios.get(repoUrl)
-    return request.then(response => response.data)
+const fetchRepoData = async repoUrl => {
+    const response = await axios.get(repoUrl)
+    return response.data
 }
 
 export default { fetchUserData, fetchRepoData }

@@ -9,29 +9,37 @@ const App = () => {
     const [repo, setRepo] = useState(null)
     const [filter, setFilter] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
+    const [userFound, setUserFound] = useState(false)
 
     const getUserData = () => {
         const url = `${baseUrl}/${filter}`
+        console.log("url", url)
         githubService
             .fetchUserData(url)
             .then(response => {
                 setData(response)
+                setUserFound(true)
             })
-            .catch(_error => {
+            .catch(error => {
+                console.log("error", error)
                 setErrorMessage('user not found enter another username ')
+                setUserFound(false)
             })
     }
 
     const getRepoData = () => {
-        const repoUrl = `${baseUrl}/${filter}/repos`
-        githubService
-            .fetchRepoData(repoUrl)
-            .then(response => {
-                setRepo(response)
-            })
-            .catch(_error => {
-                setErrorMessage(`Could not load the repositories of the user ${data.name}`)
-            })
+        if (userFound){
+            const repoUrl = `${baseUrl}/${filter}/repos`
+            console.log("repo url", repoUrl)
+            githubService
+                .fetchRepoData(repoUrl)
+                .then(response => {
+                    setRepo(response)
+                })
+                .catch(_error => {
+                    setErrorMessage(`Could not load the repositories of the user ${data.name}`)
+                })
+        }
     }
 
     const handleSubmit = (event) => {
@@ -40,20 +48,19 @@ const App = () => {
         setErrorMessage('')
         event.preventDefault()
         getUserData()
-        if (data !== null) {
-            getRepoData()
-        }
+        getRepoData()
+        
     }
 
     return (
         <div className="container">
             <h1>Github Profile Preview</h1>
-            <form onSubmit={handleSubmit}>
-                <input
+            <form className="form" onSubmit={handleSubmit}>
+                <input className="input"
                     value={filter}
                     onChange={(event) => setFilter(event.target.value)}
                 />
-                <button type="submit">search</button>
+                <button className="btn" type="submit">search</button>
             </form>
             <h1>{errorMessage}</h1>
             {data !== null && repo !== null && <Profile data={data} repo={repo} />}

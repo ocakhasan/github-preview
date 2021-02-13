@@ -5,8 +5,8 @@ const Repos = ({ data }) => {
         <div>
             <h2 className="text-center">Repositories</h2>
             <div className="repos">
-                {data.map(repo => (
-                    <a className="repo" href={repo.html_url} target="_blank" rel="noreferrer">
+                {data.map((repo, i) => (
+                    <a key={i} className="repo" href={repo.html_url} target="_blank" rel="noreferrer">
 
                         <div className="repo-header">
                             <div className="repo-name">
